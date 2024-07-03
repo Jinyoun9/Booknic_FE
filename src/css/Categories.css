@@ -1,0 +1,9 @@
+.categories {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+/* Add specific styling for category items */
