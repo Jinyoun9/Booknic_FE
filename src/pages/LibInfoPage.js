@@ -31,7 +31,7 @@ const LibInfoPage = () => {
                 }
             },
             {libCode});
-        fetchData('api/loamitemlib', (response)=>{
+        fetchData('api/loanitemlib', (response)=>{
                 if(response.length > 0){
                     const jsonData = response[0];
                     if(jsonData){
