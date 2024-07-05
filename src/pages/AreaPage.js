@@ -73,6 +73,7 @@ const AreaPage = ()  => {
                             <p>Loading...</p>
                         )}
                     </div>
+
                 </div>
             ): (
                 <p>Loading...</p>
