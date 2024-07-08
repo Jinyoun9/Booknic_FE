@@ -7,6 +7,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import LibPage from "./pages/LibPage";
 import AreaPage from "./pages/AreaPage";
 import LibInfoPage from "./pages/LibInfoPage";
+import LoginPage from "./pages/LoginPage";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,6 +17,7 @@ root.render(
             <Route path = "/lib" element = {<LibPage/>}></Route>
             <Route path = "/area" element = {<AreaPage/>}></Route>
             <Route path = "/libInfo" element = {<LibInfoPage/>}></Route>
+            <Route path = "/login" element = {<LoginPage/>}></Route>
         </Routes>
     </BrowserRouter>
 );
