@@ -31,7 +31,8 @@
     width: 70%; /* 70%의 너비를 갖도록 설정 */
 }
 .area-container button,
-.dtl-container button {
+.dtl-container button,
+.container-wrapper button{
     font-family: "Jua", sans-serif;
     background-color: lightgray;
     border: none;
@@ -47,7 +48,9 @@
     transition-duration: 0.4s;
 }
 .area-container button.selected,
-.dtl-container button.selected {
+.dtl-container button.selected,
+.container-wrapper button.selected
+{
     background-color: #ffffff;
     color: #4CAF50;
     border: none;

@@ -13,10 +13,6 @@ const Categories = () => {
             {location.pathname === '/' && (
                 <button onClick={()=> handleLibraryFind()}>도서관 찾기</button>
             )}
-            {location.pathname === '/lib' && (
-                <button>경기</button>   
-            )
-            }
         </div>
     );
 };

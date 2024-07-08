@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+.lib-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start; /* 왼쪽 정렬 */
+        padding: 10px;
+        box-sizing: border-box;
+        width: 100%; /* 가득 채우기 */
+}
+
+.lib-container div {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%; /* 가득 채우기 */
+}
+
+.lib-container last-child {
+        margin-right: 0;
+        width: 70%;
+}
+
+.lib-container button {
+        font-family: "Jua", sans-serif;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        background-color: transparent;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+        transition-duration: 0.4s;
+}
+
+.container-wrapper {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start; /* 왼쪽 정렬 */
+        padding: 0 10px; /* 여백 */
+        width: 100%;
+}
+
+.title-container {
+    padding-left: 10px; /* h2 왼쪽 여백 추가 */
+}
+h2 {
+    margin-left: 20px; /* 추가적인 왼쪽 마진 */
+}
+.pagination-container {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+}
+
+.pagination-container button {
+        font-family: "Jua", sans-serif;
+        border: none;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        background-color: transparent;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px;
+        cursor: pointer;
+        border-radius: 8px;
+        transition-duration: 0.4s;
+}
+
+.pagination-container button.active {
+        background-color: #ddd;
+}
