@@ -1,22 +1,23 @@
 import axios from 'axios';
 
-const baseURL = 'http://localhost:8080/';
+const baseURL = 'https://localhost:8443/';
 
 const postData = async (endpoint, setLoading, setError, params) => {
     try {
-
         setLoading(true);
         setError(false);
         const url = `${baseURL}${endpoint}`;
         console.log(url);
         console.log(params);
+
         let response;
         let headers = {
-                'Content-Type': 'application/json'
+            'Content-Type': 'application/json'
         };
         response = await axios.post(url, params, {
-                headers: headers
+            headers: headers
         });
+
         console.log('Response:', response.data);
         return response.data;
     } catch (error) {

@@ -17,7 +17,7 @@ const LoginPage = () => {
         };
         try {
             // 로그인 요청을 보냄
-            const response = await postData('auth/login', setLoading, setError, params);
+            const response = await postData('api/login', setLoading, setError, params);
 
             // 응답이 에러인 경우 처리
             if (response.error) {
