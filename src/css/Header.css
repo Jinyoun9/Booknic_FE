@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 .header {
     display: flex;
     justify-content: space-between;
@@ -14,4 +15,18 @@
 .menu-icon {
     font-size: 24px;
     cursor: pointer;
+}
+button {
+    font-family: "Jua", sans-serif;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    background-color: transparent;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition-duration: 0.4s;
 }
