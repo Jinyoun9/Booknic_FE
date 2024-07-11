@@ -17,11 +17,16 @@ const postData = async (endpoint, setLoading, setError, params) => {
         response = await axios.post(url, params, {
             headers: headers
         });
-
+        if (endpoint === 'auth/login'){
+            const accessToken = response.headers['authorization'];
+            if (accessToken) {
+                localStorage.setItem('accessToken', accessToken);
+            }
+        }
         console.log('Response:', response.data);
         return response.data;
     } catch (error) {
-        console.error('Error posting data:', error);
+        console.log('Error posting data: ', error);
         setError(true);
         return { error: true }; // 에러 발생 시 반환 값에 에러 표시
     } finally {
