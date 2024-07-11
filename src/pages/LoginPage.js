@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import postData from "../postData";
+import {useNavigate} from "react-router-dom";
 
 const LoginPage = () => {
+    const navigate = useNavigate();
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
@@ -17,25 +19,15 @@ const LoginPage = () => {
         };
         try {
             // 로그인 요청을 보냄
-            const response = await postData('api/login', setLoading, setError, params);
+            const response = await postData('auth/login', setLoading, setError, params);
 
             // 응답이 에러인 경우 처리
             if (response.error) {
                 throw new Error('Network response was not ok');
             }
-
-            // 응답 데이터에서 토큰을 추출
-            const { accessToken, refreshToken } = response;
-
-            // 로컬 스토리지에 토큰 저장
-            localStorage.setItem('accessToken', accessToken);
-            localStorage.setItem('refreshToken', refreshToken);
-
-            alert('Login successful');
-            // 로그인 성공 후 리디렉션 처리 (필요시)
-            // window.location.href = '/dashboard';
+            navigate('/');
         } catch (error) {
-            console.error('There was a problem with the login request:', error);
+            console.log('There was a problem with the login request:', error);
             alert('Login failed');
         }
     };
