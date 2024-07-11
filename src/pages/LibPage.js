@@ -4,7 +4,6 @@ import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";
 import fetchData from "../fetchData";
-import { Oval } from 'react-loader-spinner';
 import '../css/LibPage.css';
 
 const LibPage = () => {
@@ -103,18 +102,7 @@ const LibPage = () => {
                         ))
                     ) : (
                         <div className="loader">
-                            <Oval
-                                height={80}
-                                width={80}
-                                color="#4fa94d"
-                                wrapperStyle={{}}
-                                wrapperClass=""
-                                visible={true}
-                                ariaLabel='oval-loading'
-                                secondaryColor="#4fa94d"
-                                strokeWidth={2}
-                                strokeWidthSecondary={2}
-                            />
+                            <p>...loading</p>
                         </div>
                     )}
                 </div>
