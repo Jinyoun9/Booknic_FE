@@ -1,22 +1,21 @@
-import axios from 'axios';
+import axios from './axios';
 
-const baseURL = 'https://localhost:8443/';
 
 const postData = async (endpoint, setLoading, setError, params) => {
     try {
         setLoading(true);
         setError(false);
-        const url = `${baseURL}${endpoint}`;
-        console.log(url);
-        console.log(params);
 
-        let response;
+        const authToken = localStorage.getItem('accessToken'); // authToken을 로컬 스토리지에서 가져옴
         let headers = {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `${authToken}`
         };
-        response = await axios.post(url, params, {
+
+        const response = await axios.post(endpoint, params, {
             headers: headers
         });
+
         if (endpoint === 'auth/login'){
             const accessToken = response.headers['authorization'];
             if (accessToken) {
