@@ -4,15 +4,17 @@ import Modal from 'react-modal'; // react-modal import 추가
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";
-import fetchData from "../fetchData";
+import fetchData from "../api/fetchData";
 import '../css/LibInfoPage.css';
 import noImage from '../asset/image/noimage.jpg';
-
-Modal.setAppElement('#root'); // 애플리케이션 루트 요소 설정
+import postData from "../api/postData";
+import {FaStar} from "react-icons/fa";
 
 const LibInfoPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
     const url = new URLSearchParams(location.search);
     const lName = url.get('libName');
     const { libCode } = location.state || {};
@@ -21,7 +23,8 @@ const LibInfoPage = () => {
     const [popularBooks, setPopularBooks] = useState([]);
     const [bookModalIsOpen, setBookModalIsOpen] = useState(false);
     const [selectedBook, setSelectedBook] = useState(null); // 선택된 책 정보 상태 추가
-
+    const [authToken, setAuthToken] = useState(localStorage.getItem('accessToken') || '');
+    const [toggleValue, setToggleValue] = useState(false);
     useEffect(() => {
         if (libCode !== null && libCode !== undefined) {
             setLCode(libCode); // libCode가 유효하면 lCode 상태를 업데이트합니다.
@@ -60,6 +63,17 @@ const LibInfoPage = () => {
         setSelectedBook(null); // 선택된 책 정보 초기화
     }
 
+    const handleFavoriteClick = (bookname, library) => {
+        setToggleValue(toggleValue ? 0 : 1);
+        const params = {bookname, library, toggleValue};
+        if(authToken){
+            postData('fav/register', setLoading, setError, params);
+        }
+        else{
+            alert('로그인이 필요한 서비스입니다.');
+            navigate('/login');
+        }
+    }
     return (
         <div>
             <Header />
@@ -109,6 +123,9 @@ const LibInfoPage = () => {
                         {selectedBook && (
                             <div className="book-modal-content">
                                 <span className="close-button" onClick={bookModalClose}>&times;</span>
+                                <button onClick={() => handleFavoriteClick(selectedBook.bookname, lName)}>
+                                    <FaStar size={30} color={toggleValue ? "yellow" : "gray"} />
+                                </button>
                                 <img src={selectedBook.bookImageURL || noImage} alt={selectedBook.bookname} />
                                 <h2>{selectedBook.bookname}</h2>
                                 <p>저자: {selectedBook.author}</p>
