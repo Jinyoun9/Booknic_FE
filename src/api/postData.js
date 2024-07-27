@@ -22,8 +22,8 @@ const postData = async (endpoint, setLoading, setError, params) => {
                 localStorage.setItem('accessToken', accessToken);
             }
         }
-        console.log('Response:', response.data);
-        return response.data;
+        console.log('Response:', response.status);
+        return response.status;
     } catch (error) {
         console.log('Error posting data: ', error);
         setError(true);

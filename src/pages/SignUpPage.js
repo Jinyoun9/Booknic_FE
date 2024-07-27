@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import postData from "../api/postData";
 import { checkIdAvailability, checkEmailAvailability } from '../api/validation';
+import {useNavigate} from "react-router-dom";
 const SignUpPage = () => {
+    const navigate = useNavigate();
     const [id, setId] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -18,7 +20,12 @@ const SignUpPage = () => {
         const validateId = async () => {
             if (id) {
                 const idAvailable = await checkIdAvailability(id);
-                setIdValid(!idAvailable ? '사용 가능한 아이디입니다.' : '아이디가 이미 사용 중입니다.');
+                if(idAvailable === 'CONSIST_INVALID'){
+                    setIdValid('아이디: 5~20자의 영문 소문자, 숫자만 사용 가능합니다.');
+                }
+                else{
+                    setIdValid(!idAvailable ? '사용 가능한 아이디입니다.' : '아이디가 이미 사용 중입니다.');
+                }
                 setIdPass(!idAvailable);
             }
         };
@@ -40,7 +47,13 @@ const SignUpPage = () => {
 
     const handleSignUp = async (event) => {
         event.preventDefault(); // 폼의 기본 제출 동작을 막습니다.
-        postData('register/signup', setLoading, setError, { id, password, username, gender, email });
+        const responseStatus = await postData('register/signup', setLoading, setError, { id, password, username, gender, email });
+        if(responseStatus === 200){
+            navigate('/');
+        }
+        else{
+            alert('잘못된 요청입니다.');
+        }
     };
     const validForm = idPass && emailPass && username && password && gender;
     return (

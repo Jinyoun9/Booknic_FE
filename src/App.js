@@ -6,10 +6,12 @@ import Categories from './components/Categories';
 import Promotions from './components/Promotions';
 import Recommendations from './components/Recommendations';
 import Footer from './components/Footer';
+import WebSocketClient from "./components/WebSocketClient";
 
 function App() {
   return (
       <div className="App">
+        <WebSocketClient/>
         <Header />
         <SearchBar />
         <Categories />

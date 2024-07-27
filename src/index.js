@@ -9,17 +9,19 @@ import AreaPage from "./pages/AreaPage";
 import LibInfoPage from "./pages/LibInfoPage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
+import FavoritePage from "./pages/FavoritePage";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
         <Routes>
-            <Route path="/" element={<App />} />
+            <Route path="/" element={<App/>} />
             <Route path = "/lib" element = {<LibPage/>}></Route>
             <Route path = "/area" element = {<AreaPage/>}></Route>
             <Route path = "/libInfo" element = {<LibInfoPage/>}></Route>
             <Route path = "/login" element = {<LoginPage/>}></Route>
             <Route path = "/signup" element = {<SignUpPage/>}></Route>
+            <Route path = "/favorite" element = {<FavoritePage/>}></Route>
         </Routes>
     </BrowserRouter>
 );

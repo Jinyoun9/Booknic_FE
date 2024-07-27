@@ -17,6 +17,9 @@ const Footer = () => {
     const handleLocationClick = () => {
         navigate('/area');
     }
+    const handleFavoriteClick = ()  => {
+        navigate('/favorite');
+    }
     useEffect(() => {
         const accessToken  = localStorage.getItem('accessToken');
         if(accessToken){
