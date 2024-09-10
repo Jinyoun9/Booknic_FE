@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import postData from "../api/postData";
-import {useNavigate} from "react-router-dom";
+
+import "../css/LoginPage.css";
 
 const LoginPage = () => {
     const navigate = useNavigate();
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
-    const [isValid, setisValid] = useState(false);
+    const [loginType, setLoginType] = useState('user'); // 'user' or 'staff'
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const params = {
             id: id,
-            password: password
+            password: password,
+            role: loginType
         };
         try {
-            // 로그인 요청을 보냄
-            const response = await postData('auth/login', setLoading, setError, params);
+            const response = await postData('/auth/login', params);
 
             // 응답이 에러인 경우 처리
             if (response.error) {
@@ -36,8 +38,22 @@ const LoginPage = () => {
         <div className="user-container">
             <div className="user-header">
                 <h2 className="login-title">Login</h2>
+                <div className="login-type-buttons">
+                    <button
+                        className={`login-user-button ${loginType === 'user' ? 'active' : ''}`}
+                        onClick={() => setLoginType('user')}
+                    >
+                        개인회원 로그인
+                    </button>
+                    <button
+                        className={`login-staff-button ${loginType === 'staff' ? 'active' : ''}`}
+                        onClick={() => setLoginType('staff')}
+                    >
+                        도서관직원 로그인
+                    </button>
+                </div>
             </div>
-            {!isValid && (
+            <div className="login-form">
                 <form onSubmit={handleSubmit}>
                     <div>
                         <input
@@ -59,11 +75,15 @@ const LoginPage = () => {
                             required
                         />
                     </div>
-                    <button type="submit" className="login-button" disabled={loading}>
+                    <button
+                        type="submit"
+                        className={`login-button ${loginType === 'user' ? 'user-login' : 'staff-login'}`}
+
+                    >
                         로그인
                     </button>
                 </form>
-            )}
+            </div>
         </div>
     );
 };

@@ -1,35 +1,34 @@
 import axios from './axios';
 
-
-const postData = async (endpoint, setLoading, setError, params) => {
+// postData 함수 수정
+const postData = async (endpoint, params) => {
     try {
-        setLoading(true);
-        setError(false);
-
-        const authToken = localStorage.getItem('accessToken'); // authToken을 로컬 스토리지에서 가져옴
-        let headers = {
+        // 로컬 스토리지에서 authToken 가져오기
+        const authToken = localStorage.getItem('accessToken');
+        const headers = {
             'Content-Type': 'application/json',
             'Authorization': `${authToken}`
         };
 
-        const response = await axios.post(endpoint, params, {
-            headers: headers
-        });
+        // POST 요청 보내기
+        const response = await axios.post(endpoint, params, { headers,
+            withCredentials: true,
+         });
 
-        if (endpoint === 'auth/login'){
+        // 로그인 응답 처리
+        if (endpoint === '/auth/login') {
             const accessToken = response.headers['authorization'];
             if (accessToken) {
                 localStorage.setItem('accessToken', accessToken);
             }
         }
-        console.log('Response:', response.status);
-        return response.status;
+
+        // 응답 상태 코드 반환
+        return { status: response.status, data: response.data };
     } catch (error) {
-        console.log('Error posting data: ', error);
-        setError(true);
-        return { error: true }; // 에러 발생 시 반환 값에 에러 표시
-    } finally {
-        setLoading(false);
+        // 오류 처리
+        console.error('Error posting data:', error);
+        return { error: true, message: error.message };
     }
 };
 

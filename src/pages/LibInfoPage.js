@@ -22,7 +22,6 @@ const LibInfoPage = () => {
     const [lCode, setLCode] = useState(null);
     const [libInfo, setLibInfo] = useState([]);
     const [popularBooks, setPopularBooks] = useState([]);
-    const [bookModalIsOpen, setBookModalIsOpen] = useState(false);
     const [loanModalIsOpen, setLoanModalIsOpen] = useState(false);
     const [selectedBook, setSelectedBook] = useState(null); // 선택된 책 정보 상태 추가
     const [authToken, setAuthToken] = useState(localStorage.getItem('accessToken') || '');
@@ -56,17 +55,6 @@ const LibInfoPage = () => {
             }
         }, { libCode });
     }, [libCode]);
-
-    const bookModalOpen = (book) => {
-        setSelectedBook(book); // 선택된 책 정보 설정
-        setBookModalIsOpen(true);
-    }
-
-    const bookModalClose = () => {
-        setBookModalIsOpen(false);
-        setSelectedBook(null); // 선택된 책 정보 초기화
-    }
-
     const loanModalClose = () => {
         setLoanModalIsOpen(false);
         setQrValue(null); // 선택된 책 정보 초기화
@@ -87,8 +75,9 @@ const LibInfoPage = () => {
         const accessToken = localStorage.getItem('accessToken');
         const qrURL = `https://192.168.10.104:8443/book/loan?bookname=${encodeURIComponent(bookname)}&library=${encodeURIComponent(library)}&token=${encodeURIComponent(accessToken)}}`
         setQrValue(qrURL);
-        setLoanModalIsOpen(true);
-        setBookModalIsOpen(false);
+    }
+    const handleBookClick = (book) => {
+            navigate('/book', { state: { book, library: lName } });
     }
     return (
         <div>
@@ -118,9 +107,11 @@ const LibInfoPage = () => {
                             {popularBooks.length > 0 ? (
                                 popularBooks.map((book, index) => (
                                     <div key={index} className="popular-book-item">
-                                        <img src={book.bookImageURL || noImage} />
-                                        <button onClick={() => bookModalOpen(book)}>{book.bookname}</button>
-                                        <p>{book.author}</p>
+                                        <button onClick={() => handleBookClick(book)}>
+                                          <img src={book.bookImageURL || noImage} />
+                                        </button>
+                                        <button onClick={() => handleBookClick(book)}>{book.bookname}</button>
+                                        <p>{book.authors}</p>
                                         <p>{book.description}</p>
                                     </div>
                                 ))
@@ -130,15 +121,12 @@ const LibInfoPage = () => {
                         </div>
                     </div>
                     <Modal
-                        isOpen={bookModalIsOpen}
-                        onRequestClose={bookModalClose}
                         contentLabel="Book Modal"
                         className="book-modal"
                         overlayClassName="book-modal-overlay"
                     >
                         {selectedBook && (
                             <div className="book-modal-content">
-                                <span className="close-button" onClick={bookModalClose}>&times;</span>
                                 <button onClick={() => handleFavoriteClick(selectedBook.bookname, lName)}>
                                     <FaStar size={30} color={toggleValue ? "yellow" : "gray"} />
                                 </button>
@@ -147,7 +135,7 @@ const LibInfoPage = () => {
                                 </button>
                                 <img src={selectedBook.bookImageURL || noImage} alt={selectedBook.bookname} />
                                 <h2>{selectedBook.bookname}</h2>
-                                <p>저자: {selectedBook.author}</p>
+                                <p>저자: {selectedBook.authors}</p>
                                 <p>{selectedBook.description}</p>
                             </div>
                         )}

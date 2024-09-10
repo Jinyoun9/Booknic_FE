@@ -1,0 +1,89 @@
+/* 책 정보 컨테이너 */
+.book-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: calc(100vh - 200px); /* 화면 높이에서 Header, Footer의 예상 높이를 뺀 값 */
+    overflow-y: auto; /* 세로 스크롤바를 추가 */
+    margin-bottom: 20px; /* Footer와의 간격 */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* 뒤로가기 버튼 */
+.back-button {
+    align-self: flex-start;
+    margin: 10px;
+}
+
+/* 책 이미지 */
+.book-image {
+    width: 200px;
+    height: auto;
+}
+
+/* 책 상세 정보 */
+.book-details {
+    text-align: center;
+}
+
+.recommend-books-section {
+    margin-top: 20px;
+    width: 100%;
+    overflow-x: hidden; /* 가로 스크롤바를 숨김 */
+    overflow-y: hidden; /* 세로 스크롤바를 숨김 */
+    padding: 0 20px; /* 좌우 패딩 */
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* 추천 도서 리스트 컨테이너 */
+.recommend-books-list-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 450px; /* 최소 높이를 설정하여 유동적으로 조절됨 */
+        padding: 0 10px; /* 좌우 패딩 추가 */
+        box-sizing: border-box;
+}
+
+/* 슬라이드 버튼 */
+.slide-button {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* 추천 도서 리스트 */
+.recommend-books-list {
+    display: flex;
+    max-width: 100%;
+    padding: 10px 0;
+}
+
+/* 추천 도서 아이템 */
+.recommend-book-item {
+    flex: 1;
+    margin: 0 10px;
+    text-align: center;
+    min-width: 150px;
+}
+
+/* 추천 도서 이미지 */
+.recommend-book-image {
+    width: 100px;
+    height: 200px;
+    cursor: pointer;
+}
+
+/* 추천 도서 상세 */
+.recommend-book-details {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+h2{
+    font-size: 1.5em; /* 필요에 따라 크기 조정 */
+    color: #333; /* 텍스트 색상 */
+    justify-content:center;
+}

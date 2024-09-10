@@ -2,10 +2,13 @@ import React, {useEffect, useState} from 'react';
 import '../css/Footer.css';
 import {useLocation, useNavigate} from "react-router-dom";
 import AreaPage from "../pages/AreaPage";
+import {jwtDecode} from 'jwt-decode';
 
-const Footer = () => {
+const Footer = ({userInfo}) => {
+
     const location = useLocation();
     const navigate = useNavigate();
+    const accessToken =  localStorage.getItem('accessToken');
     const [showLocationPage, setShowLocationPage] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const handleLibraryClick = () => {
@@ -19,6 +22,14 @@ const Footer = () => {
     }
     const handleFavoriteClick = ()  => {
         navigate('/favorite');
+    }
+    const handleMyClick = () => {
+        if (userInfo.role === 'user') {
+            navigate('/user', {state: {userInfo}});
+        }
+        else if (userInfo.role === 'staff') {
+            navigate('/staff', {state: {userInfo}});
+        }
     }
     useEffect(() => {
         const accessToken  = localStorage.getItem('accessToken');
@@ -45,7 +56,7 @@ const Footer = () => {
                 <button onClick={() => handleHomeClick()}>홈</button>
                 <button>찜</button>
                 {isLoggedIn ? (
-                    <button>마이</button>
+                    <button onClick = {handleMyClick}>마이</button>
                 ): (
                     <button>로그인</button>
                 )
