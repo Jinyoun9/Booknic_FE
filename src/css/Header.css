@@ -2,22 +2,24 @@
 .header {
     display: flex;
     justify-content: space-between;
-    padding: 10px;
-    background-color: #fff;
-    border-bottom: 1px solid #eee;
+    align-items: center; /* 중앙 정렬 추가 */
+    padding: 15px 20px; /* 패딩 조정 */
+    background-color: #f8f9fa; /* 부드러운 회색 배경색 */
+    border-bottom: 1px solid #dee2e6; /* 경계선 색상 조정 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 미세한 그림자 추가 */
 }
+
 
 .logo {
-    font-size: 24px;
+    font-size: 28px; /* 로고 크기 조정 */
     font-weight: bold;
+    color: #333; /* 로고 색상 추가 */
+    margin-right: 20px; /* 오른쪽 마진 추가 */
 }
 
-.menu-icon {
-    font-size: 24px;
-    cursor: pointer;
-}
-button {
+.header button {
     font-family: "Jua", sans-serif;
+    color: black;
     border: none;
     padding: 10px 20px;
     text-align: center;
@@ -29,4 +31,63 @@ button {
     cursor: pointer;
     border-radius: 8px;
     transition-duration: 0.4s;
+}
+/* Header.css */
+.notification-drawer {
+    position: fixed;
+    top: 0;
+    right: 0; /* 서랍장이 화면 오른쪽에 붙도록 수정 */
+    width: 300px; /* 너비를 300px로 조정 */
+    height: 100%;
+    background-color: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%); /* 화면 밖으로 밀어냄 */
+    z-index: 1000;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* 수직 방향으로 상단에 붙도록 수정 */
+    justify-content: flex-start; /* 수평 방향으로 중앙에 위치하도록 수정 */
+}
+
+.notification-drawer.true {
+    transform: translateX(0); /* 열리면 화면 안으로 들어옴 */
+}
+
+.menu-icon {
+    cursor: pointer;
+    font-size: 24px;
+}
+
+/* 서랍장 내부 스타일 */
+.notification-drawer h3 {
+    margin-bottom: 20px;
+    text-align: left; /* 제목을 왼쪽 정렬 */
+}
+
+.notification-drawer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%; /* 리스트가 서랍장 너비에 맞도록 */
+    display: flex;
+    flex-direction: column; /* 리스트 항목을 세로로 나열 */
+    align-items: flex-start; /* 리스트 항목을 왼쪽에 정렬 */
+}
+
+.notification-drawer ul li {
+    margin: 10px 0;
+    text-align: left; /* 리스트 항목 텍스트 왼쪽 정렬 */
+}
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #333;
 }

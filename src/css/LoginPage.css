@@ -1,0 +1,78 @@
+.user-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.user-container.user .login-form {
+    background-color: #f8f9fa; /* 개인회원 로그인 배경색 */
+    border: 1px solid #ced4da;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.user-container.staff .login-form {
+    background-color: #e9ecef; /* 도서관직원 로그인 배경색 */
+    border: 1px solid #adb5bd;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.login-type-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.login-staff-button,
+.login-user-button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    background-color: #e0e0e0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.login-user-button.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.login-staff-button.active {
+    background-color: #28a745;
+    color: white;
+}
+
+.login-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.login-form {
+    border-radius: 8px;
+}
+
+.login-input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.login-button {
+    padding: 10px 20px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.user-login {
+    background-color: #007bff; /* 개인회원 로그인 버튼 색상 */
+}
+
+.staff-login {
+    background-color: #28a745; /* 도서관직원 로그인 버튼 색상 */
+}

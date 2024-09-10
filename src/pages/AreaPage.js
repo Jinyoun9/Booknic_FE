@@ -1,5 +1,5 @@
 import {startTransition, useEffect, useState} from "react";
-import fetchData from "../fetchData";
+import fetchData from "../api/fetchData";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import '../css/AreaPage.css'

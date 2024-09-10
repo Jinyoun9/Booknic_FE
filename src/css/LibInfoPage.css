@@ -1,57 +1,156 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+/* LibInfoPage.css */
 
-h2,
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.library-info-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.library-info-container h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
 .lib-info-card {
-    display: flex;
-    flex-direction: row; /* 요소들을 가로로 배열합니다. */
-    align-items: center; /* 세로 정렬을 중앙 정렬합니다. */
-    justify-content: center;
-    margin-bottom: 20px; /* 각 lib-info-card 요소 사이의 간격을 조정합니다. */
-    font-family: "Jua", sans-serif;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
 }
 
 .lib-info-title {
-    margin-right: 10px; /* 각 정보 항목 사이의 간격을 조정합니다. */
+    font-size: 18px;
+    margin: 10px 0;
 }
 
 .lib-info-content {
-    font-weight: normal; /* 정보 내용에 대한 글꼴 굵기를 일반으로 설정합니다. */
+    font-weight: normal;
 }
 
 .homepage-button {
-    margin-left: 10px; /* 버튼 왼쪽 여백을 추가하여 정보와의 간격을 조정합니다. */
-    padding: 8px 12px; /* 버튼 내용 주변에 패딩을 추가합니다. */
-    background-color: #007bff; /* 버튼의 배경색을 설정합니다. */
-    color: #fff; /* 버튼 텍스트 색상을 흰색으로 설정합니다. */
-    border: none; /* 버튼 테두리를 제거합니다. */
-    border-radius: 4px; /* 버튼 모서리를 둥글게 만듭니다. */
-    cursor: pointer; /* 마우스 커서를 포인터로 변경하여 클릭 가능함을 나타냅니다. */
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
 }
 
 .homepage-button:hover {
-    background-color: #0056b3; /* 버튼에 마우스를 올릴 때 배경색을 어둡게 변경합니다. */
+    background-color: #0056b3;
 }
+
+.popular-books-section {
+    margin-top: 40px;
+}
+
+.popular-books-section h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
 .popular-books-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2열로 나누기 */
-    gap: 20px; /* 각각의 요소 사이의 간격을 설정할 수 있습니다. */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .popular-book-item {
-    width: 100%;
-    margin-bottom: 20px;
-    text-align: center; /* 이미지를 중앙 정렬하기 위해 추가 */
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff;
+    text-align: center;
 }
 
 .popular-book-item img {
-    width: 50%; /* 이미지 너비를 부모 요소에 맞춰 100%로 설정 */
-    height: auto; /* 이미지 높이를 자동으로 조정하여 비율 유지 */
-    max-width: 50%; /* 이미지가 부모 요소를 넘어서지 않도록 최대 너비 설정 */
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
 }
 
-@media (min-width: 768px) {
-    .popular-books-list {
-        grid-template-columns: repeat(5, 1fr); /* 5개씩 나타내기 */
-    }
+.popular-book-item button {
+    background: none;
+    border: none;
+    color: #007BFF;
+    cursor: pointer;
+    text-decoration: underline;
 }
 
+.popular-book-item button:hover {
+    color: #0056b3;
+}
+
+.popular-book-item p {
+    margin: 5px 0;
+}
+
+.book-modal, .loan-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    max-width: 500px;
+    width: 100%;
+    z-index: 1000;
+}
+
+.book-modal-content, .loan-modal-content {
+    text-align: center;
+}
+
+.book-modal .close-button, .loan-modal .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.book-modal img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.book-modal h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.book-modal p {
+    margin-bottom: 20px;
+}
+
+.book-modal button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.book-modal button:hover {
+    background-color: #0056b3;
+}

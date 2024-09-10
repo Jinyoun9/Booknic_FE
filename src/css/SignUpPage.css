@@ -1,0 +1,101 @@
+.signup-container {
+    padding: 20px;
+    text-align: center;
+    max-width: 600px;
+    margin: auto;
+}
+
+.signup-type-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.signup-staff-button,
+.signup-user-button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    background-color: #e0e0e0;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.signup-user-button.active {
+    background-color: #28a745;
+    color: white;
+}
+
+.signup-staff-button.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.signup-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input,
+select {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input:focus,
+select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(38, 143, 255, 0.25);
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.signup-submit-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.user-submit {
+    background-color: #28a745; /* 개인회원 로그인 제출 버튼 색상 */
+}
+
+.staff-submit {
+    background-color: #007bff; /* 직원 로그인 제출 버튼 색상 */
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
